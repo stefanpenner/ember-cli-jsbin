@@ -1,0 +1,75 @@
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/loader.js/loader.js"></script>
+<script src="../bower_components/handlebars/handlebars.js"></script>
+<script src="../bower_components/ember/ember.js"></script>
+<script src="../bower_components/ember-load-initializers/ember-load-initializers.js"></script>
+<script src="../bower_components/ember-resolver/dist/ember-resolver.js"></script>
+<script src="../bower_components/ember-cli-shims/app-shims.js"></script>
+<script src="vendor/ember-cli.js"></script>
+
+<meta name="ember-app" content="example" mode="auto-run">
+
+<script type="text/x-esnext" id="example/app">
+  import Ember from 'ember';
+  import Resolver from 'ember/resolver';
+  import loadInitializers from 'ember/load-initializers';
+  import config from './config/environment';
+  
+  Ember.MODEL_FACTORY_INJECTIONS = true;
+  
+  var App = Ember.Application.extend({
+    modulePrefix: config.modulePrefix,
+    podModulePrefix: config.podModulePrefix,
+    Resolver: Resolver
+  });
+  
+  loadInitializers(App, config.modulePrefix);
+  
+  export default App;
+</script>
+
+<script type="text/x-esnext" id="example/config/environment">
+  export default {
+    locationType: 'hash',
+    modulePrefix: 'example'
+  };
+</script>
+
+<script type="text/x-esnext" id="example/router">
+  import Ember from 'ember';
+  import config from './config/environment';
+  
+  var Router = Ember.Router.extend({
+    location: config.locationType
+  });
+  
+  Router.map(function() {
+    this.route('foo');
+    this.route('bar');
+  });
+  
+  export default Router;
+</script>
+
+<script type="text/x-handlebars" id="example/templates/application">
+  <h1>Hello, World</h1>
+
+  <ul>
+    <li> {{#link-to 'index'}} Home {{/link-to}} </li>
+    <li> {{#link-to 'foo'  }} foo  {{/link-to}} </li>
+    <li> {{#link-to 'bar'  }} bar  {{/link-to}} </li>
+  </ul>
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="example/templates/foo">
+  <h1>FOO</h1>
+</script>
+
+<script type="text/x-handlebars" id="example/templates/bar">
+  <h1>Bar</h1>
+</script>
+
+<script type="text/x-handlebars" id="example/templates/index">
+  <h1>Index</h1>
+</script>

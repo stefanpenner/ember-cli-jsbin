@@ -1,0 +1,40 @@
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/loader.js/loader.js"></script>
+<script src="../bower_components/handlebars/handlebars.js"></script>
+<script src="../bower_components/ember/ember.js"></script>
+<script src="../bower_components/ember-load-initializers/ember-load-initializers.js"></script>
+<script src="../bower_components/ember-resolver/dist/ember-resolver.js"></script>
+<script src="../bower_components/ember-cli-shims/app-shims.js"></script>
+<script src="vendor/ember-cli.js"></script>
+<meta name="ember-app" content="example" mode="auto-run">
+<script type='text/x-esnext' id='app/app'>
+import Ember from 'ember';
+import Resolver from 'ember/resolver';
+import loadInitializers from 'ember/load-initializers';
+import config from './config/environment';
+
+Ember.MODEL_FACTORY_INJECTIONS = true;
+
+var App = Ember.Application.extend({
+  modulePrefix: config.modulePrefix,
+  podModulePrefix: config.podModulePrefix,
+  Resolver: Resolver
+});
+
+loadInitializers(App, config.modulePrefix);
+
+export default App;
+</script>
+<script type='text/x-esnext' id='app/router'>
+import Ember from 'ember';
+import config from './config/environment';
+
+var Router = Ember.Router.extend({
+  location: config.locationType
+});
+
+Router.map(function() {
+});
+
+export default Router;
+</script>
